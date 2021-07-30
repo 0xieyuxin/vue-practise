@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            model  给select 绑定
+        -->
+        <select name="" id="" v-model='selected'>
+            <option v-bind:value="item.value" v-for='(item,index) in adress'>{{item.name}}</option>
+        </select>
+        <h1>{{selected}}</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                // 渲染数据
+                adress: [
+                    { name: '南京', value: 'nanjing' },
+                    { name: '上海', value: 'shanghai' },
+                    { name: '杭州', value: 'hangzhou' },
+
+                ],
+                selected:'南京',// 记录用户选择了内容  设置默认
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

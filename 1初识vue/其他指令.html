@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+    只能显示一个标签
+    -->
+
+    <div id="app">
+        <!-- 
+
+            要的是true或false
+            v-if="vue变量"
+            变量为true  创建h1
+            v-else 绑定的元素就不用创建  压根没创建 不是创建后隐藏
+
+
+            注意:
+            1  v-else  不能离开 v-if 
+            v-if 可以独立使用
+            2  结合使用时 适合两个相邻兄弟元素  只能显示一个
+            3  适合给任意的元素绑定  动态控制元素的创建和销毁
+
+
+
+         -->
+        <h1 v-if="isgood">今天天气很好</h1>
+        <h1 v-else>今天天气不好</h1>
+
+
+
+        <span v-if="isshow">aaaa</span>
+        <span v-else>bbbb</span>
+
+        <!-- 
+            替换: v-if v-else结构
+         -->
+        <nav v-if="token">
+            <span>购物车</span>
+            <span>退出登录</span>
+        </nav>
+        <nav v-if="!token">
+            <span>登录</span>
+            <span>注册</span>
+        </nav>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+                isgood: false,
+                isshow: true,
+                token: "sdfad"
+            },
+            created(){
+                console.log("creat init run");
+                setTimeout(()=>{
+                    this.token=""
+                },3000)
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

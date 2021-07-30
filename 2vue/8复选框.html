@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <form action="">
+            <div> <input type="checkbox" name="" id="" value="南京" v-model="checkarr"><span>南京</span></div>
+            <div> <input type="checkbox" name="" id="" value="上海" v-model="checkarr"><span>上海</span></div>
+            <div> <input type="checkbox" name="" id="" value="杭州" v-model="checkarr"><span>杭州</span></div>
+
+            <h1>{{checkarr}}</h1>
+
+        </form>
+    </div>
+    <script>
+        /* 
+        多选:用数组保存用户所有选择的内容
+        */
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                // 多个被选中的value值
+                checkarr: []
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

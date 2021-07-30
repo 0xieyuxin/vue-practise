@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        .active {
+            color: plum;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- key:value
+            {a:true,b:b, active :isActive?true:false}
+abactive是字符串，作用:需要被添加的类名
+1: value 值隐士转化为 true 添加key
+2: value可以直接赋值true
+2: value引用变量，
+3: value 条件表达式返回结果。
+
+
+问题一个单词是什么? 
+1:js数据
+2:变量===> 变量的赋值是什么==> js数据
+js数据有:
+基本类型 引用类型
+
+         -->
+        <h1 :class="names">hhhhhhhhh</h1>
+        <h1 :class="{a:true,b:b,c:isActive?true:false}">hhhhhhhhh</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                names: {
+                    a: true,
+                    b: true,
+                    active: false,
+                },
+                b: true,
+                isActive: true
+            },
+            methods: {},
+            created() {
+                setTimeout(() => {
+                    this.names.active = true
+                }, 2000)
+            }
+        });
+    </script>
+</body>
+
+</html>

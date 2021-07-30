@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        .active{
+            background-color: plum;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1 :style='{color:c}'>点击改变颜色</h1>
+        <div class="contorl">
+            <button @click='change(item,index)' v-for='(item,index) in list' :class="{active:count==index}">{{item}}</button>
+            <!-- <button>red</button>
+            <button>pink</button>
+            <button>plum</button> -->
+        </div>
+    </div> 
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: ['pink', 'red', 'yellow', 'pink'],
+                c:'',// 设置h1的字体颜色 设置赋值
+                count:0  //  表示当前选中的第几个
+            },
+            methods: {
+                change(item,index) {
+                    console.log(111);
+                    console.log(item);
+                    this.c=item; // 更改c的赋值
+                    this.count=index;
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

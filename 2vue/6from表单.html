@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        v-html  给当前元素插入模板字符串
+      bug: 模板字符串中不能使用指令
+
+    -->
+    <div id="app">
+        <div class="box" v-html="t"></div>
+        <div v-html="bug"></div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                t: `
+                <h2>gfgfgfgfgf</h2>
+                `,
+                bug: `
+                <h2 v-if="a">erererer</h2>
+                
+                `,
+                a: false
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

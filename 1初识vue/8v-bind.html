@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="app">
+        <h1 v-bind:class="{active:isACtive}">hahaahh</h1>
+
+        <!-- 动态属性赋值  赋值的是变量 使用变量的赋值  active -->
+        <h1 v-bind:class="xxx">aaaa</h1>
+
+
+        <!-- 静态的赋值 -->
+        <h1 class="xxx">aaaa</h1>
+
+
+        <!-- 动态的属性赋值,赋值的是字符串  直接赋值   -->
+        <h1 v-bind:class="'xxx'">aaaa</h1>
+
+
+        <!-- 简写  有冒号 xxx是变量-->
+        <h1 :class='xxx'>sdsdsds</h1>
+
+
+        <!-- 
+            不知道是变量还是字符串
+            v-bind 调试  element 中 属性 赋值是什么
+        -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        // v-bind 数据单项绑定  数据绑定视图
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isACtive:false,
+                xxx:'active'
+
+            },
+
+        })
+
+
+    </script>
+</body>
+
+</html>

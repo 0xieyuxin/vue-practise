@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- text 绑定的值  单向绑定:-->
+        <input type="text" v-bind:value="text" @input='oninput'>
+        <h1>{{text}}</h1>
+        <!-- 
+    只用于与表单绑定
+    <input>
+<select>
+<textarea>
+components  用在其他组件无效
+    数据双向绑定
+    数据变化 视图自动变化
+    视图变化,数据自动变化
+
+ -->
+        <div>
+            <input type="text" value="username" v-model='username'>
+            <!-- 视图变化  数据变化 -->
+            <h1>{{username}}</h1>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                text: "fdfdf",  // 表示 iput 输入的内容
+                username: ''
+            },
+            methods: {
+                oninput(e) {
+                    this.text = e.target.value
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

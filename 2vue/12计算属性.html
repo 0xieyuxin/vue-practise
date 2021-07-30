@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{foo}}</h1>
+        <h1>{{foo}}</h1>
+        <h1>{{foo}}</h1>
+        <h1>{{foo}}</h1>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: "hhhhhhhhh"
+            },
+            methods: {},
+            /* 
+            computed  计算属性
+            赋值为对象
+            必须都是getter函数  有return的函数
+            */
+            computed: {
+                /* 
+                foo  是计算属性  看上去是函数  其实不是
+                作用: 保存 function函数的返回值
+
+                foo 不是函数 是保存函数的返回值 是456
+                function(){return 456}  是函数
+
+
+                (value)函数什么时候执行?
+                2.1使用计算数据时候触发。多次使用触发一次
+                2.2如果[函数中] 存在[响应式数据]，当响应式数据变化时候。(value) 函数重新执行
+
+                computed 和 methods的区别
+                1 methods 多次使用函数  函数执行对此
+                2 computed 多次使用  函数执行一次
+
+                */
+                foo: function () {
+                    console.log("111");
+                    return "哈哈哈" + this.msg
+                },
+                // a:132,  报错
+            },
+            created() {
+                setInterval(() => {
+                    this.msg = this.msg + "a"
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    computed知识点
+1:
+todos
+购物车
+2:
+table切换
+3:
+轮播
+4:
+楼层滚动
+5:
+放大镜
+6:
+loading
+7:
+alert
+8:
+二级联动三级联动
+
+-->

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+v-for  循环遍历
+item 数组元素
+index  数组索引
+goodlist  被遍历的数组
+
+
+结果 创建多个li
+
+v-for  v-if="条件表达式"  根据v-if 条件遍历
+ -->
+    <div id="app">
+        <ul>
+            <li v-for=' item in goodliat' v-if='item.id!=2'>
+                <h1>产品名称: {{item.product}} </h1>
+                <h1>id:{{item.id}} </h1>
+                <h1>描述:{{item.dec}} </h1>
+                <!-- 产品名称: {{item.product}} 
+                id:{{item.id}}  
+                描述:{{item.dec}}   -->
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+
+
+    <script>
+        // let goodlist = [
+        //     { product: 'kf', id: '1', dec: 'qwqewe' },
+        //     { product: 'ktf', id: '2', dec: 'rr' },
+        //     { product: 'krytyw3f', id: '3', dec: 'qwtte' },
+        //     { product: 'k46f', id: '4', dec: 'fgsg' },
+        //     { product: 'khthrf', id: '5', dec: 'gfg' },
+        //     { product: 'kytyf', id: '6', dec: 'qngnwe' },
+        // ]
+        // let app = document.querySelector('#app>ul');
+        // for (let i = 0; i < goodlist.length; i++) {
+        //     if(goodlist[i].id==4){
+        //         continue
+        //     }
+        //     var li = document.createElement('li');
+        //     li.innerHTML = `
+
+        //     <h1>产品名称:${goodlist[i].product}</h1>
+        //         <h1>id:${goodlist[i].id}</h1>
+        //         <h1>描述:${goodlist[i].dec}</h1>
+        //     `
+        //     app.appendChild(li)
+        // }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                goodliat: [
+                    { product: 'kf', id: '1', dec: 'qwqewe' },
+                    { product: 'ktf', id: '2', dec: 'rr' },
+                    { product: 'krytyw3f', id: '3', dec: 'qwtte' },
+                    { product: 'k46f', id: '4', dec: 'fgsg' },
+                    { product: 'khthrf', id: '5', dec: 'gfg' },
+                    { product: 'kytyf', id: '6', dec: 'qngnwe' },
+                ]
+
+            },
+
+        })
+
+// 值是动态的变化 
+        setTimeout(()=>{
+            vm.goodliat.push({
+                product:'xxx',
+                id:'7',
+                dec:'fdfdfdfdd'
+            })
+        },2000)
+
+        // let a=1;
+        // a=2;
+        // console.log(a);
+
+    </script>
+</body>
+
+</html>

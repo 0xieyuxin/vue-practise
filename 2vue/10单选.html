@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for='(item,index) in list'>
+            <!-- v-model  将input中的value 和  vue的data双向绑定 -->
+            <input type="radio" name="sex" v-bind:value="item" v-model='sex'>{{item}}
+        </div>
+        <h1>{{sex}}</h1>
+        <button @click='onclick'> 获取用户选择的</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    '男', '女'
+                ],
+                sex: '', // 记录用户选择了那个input
+            },
+            methods: {
+                onclick(){
+                    alert(this.sex)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

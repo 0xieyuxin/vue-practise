@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <div id="app">
+        <button v-on:click="reduce">-</button>
+        <span>{{count}}</span>
+        <!-- v-on : 事件名 = 事件处理函数  -->
+        <!-- 简写: @事件名="事件处理函数" -->
+        <button v-on:click="add(1,2,$event)">+</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+
+
+    <script>
+
+        /*
+        v-xx="变量"  vue指令
+        具有一定功能
+        
+        */
+        let vm=new Vue({
+            el:'#app',
+            data:{
+                count:0
+            },
+            // methods 函数中的this  为 vue实例对象  vm
+            methods:{
+                add(a,b){
+                    // 如何修改函数内部的count
+                    // vm.count++
+                    this.count++
+
+                    /* 
+                    传入实参的函数  怎么获取事件对象
+                    ----> 传入$event  事件对象
+                    */
+                },
+                reduce(){
+                    this.count--
+                },
+                // reduce:()=>{}  箭头函数中的this window  不是在函数中 就是在window中
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

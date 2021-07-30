@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        template  渲染一个空标签  扩大作用域的范围
+    -->
+    <div id="app">
+        <h1 v-for='(item,index) in list' @click='clicks(index,item)' :style="{color:item.isActive?'red':'black'}">{{item.item}}</h1>
+
+        <template></template>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    "aaaaaaaaa",
+                    "bbbbbbbb",
+                    "cccccccccc",
+                ],
+                // isActivearr: [false, false, false],
+                // 单选赋值基本类型  多选数组
+                // 1 初始化没有选择   空数组
+                // 2 将所有选择的数据  添加到数组中
+                current: [],
+                isActive:false
+            },
+            methods: {
+                clicks( index,item) {
+                    // 直接操作dom  不合理
+                    // e.target.style.color="red"
+                    // 使用数据的方式 操作dom
+                    // 验证数组中是否有  没有就添加  有就不加
+                    this.current.indexOf(index) == -1 ? this.current.push(index) : null;
+                    // this.isActivearr[index] = true;
+                    item.isActive=true
+
+                }
+            },
+
+            created(){
+                let res=[];
+                let list=this.list;
+                list.forEach(item => {
+                    res.push({
+                        isActive:false,
+                        item,
+                    })
+                });
+                this.list=res;
+                console.log(res);
+            }
+
+        });
+    </script>
+</body>
+
+</html>

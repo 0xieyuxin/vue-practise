@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <ul>
+            <li v-for='item in list'>{{item.name}}</li>
+        </ul>
+        <Ruan-Mian-Xu></Ruan-Mian-Xu>
+        <Ruan-Mian-Xu></Ruan-Mian-Xu>
+        <Ruan-Mian-Xu></Ruan-Mian-Xu>
+        <Ruan-Mian-Xu></Ruan-Mian-Xu>
+        <Ruan-Mian-Xu></Ruan-Mian-Xu>
+    </div>
+
+    <!-- vue外部不能使用vue语法 -->
+    <!-- <h1>{{msg}}</h1> -->
+    <!-- 导入 联网用 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+
+        Vue.component('RuanMianXu', {
+            template: `
+            <div>
+                <h2>{{msg}}</h2>
+            </div>
+            `,
+            data() {
+                return {
+                    msg: '我是栾棉旭',
+                }
+            }
+        })
+
+        /* +
+
+        全局注册的组件
+        Vue.component('组件名',{选项})
+        组件必须设置在根vue实例创建之前
+        组件命名规则:1 my-xxx 在dom中 以<my-xxx></my-xxx> x形式书写
+                    2 MyXxx
+        template: 设置组件的结构,最终被映入根实例或引入其他组件中
+        只能设置一个根元素
+
+        data(){}
+        data必须为函数     数据设置在返回对象中
+        使用函数 作用域是独立的  避免多个组件之间相互影响
+
+
+        el  将根实例挂载到页面中
+
+        */
+
+
+
+
+
+
+
+        // 创建vue实例
+        let app = new Vue({
+            el: '#app',  //哪个是vue的根模板
+            data: {
+                msg: 'hello',
+                list: [
+                    { name: 'sdds' },
+                    { name: "3434" }
+                ]
+            },
+            method: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

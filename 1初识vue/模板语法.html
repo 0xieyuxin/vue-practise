@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 引入变量 -->
+        <h1>{{msg}}</h1>
+
+        <!-- 函数执行-->
+        <h2>{{xxx()}}</h2>
+        <!-- {{}} :渲染数据 -->
+
+        <!-- 可以写表达式 -->
+        <h2>{{flag?'a':'b'}}</h2>
+
+        <h3>{{getName()}}</h3>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        // vm是实例
+        let vm = new Vue({
+            el: '#app', // 将app标签指为根模板 不指定放不进去 是整除的html文件 只能驱动指定的模板
+            /* 
+            data
+        1:#vm中需要的响应式数据
+        2: vm实例可以获取data中数据
+        3:响应式的
+
+            */
+            data: {
+                msg: 'hello',
+                // flag: false
+                flag: true
+            },
+            /* 
+            
+            methos定义函数赋值为对象
+            1:methos中必须是函数
+            2:函数可以被Vm实例访问
+            3:模板语法可以直接使用
+
+            */
+            methods: {
+                xxx() {
+                    return "132"
+                }
+            },
+            // 计算属性  赋值为对象
+            // 所有的属性  必须有return 返回值
+            computed: {
+                getName() {
+                    return "hhhhhh"
+                }
+            }
+        })
+
+        // 原型上的api  代替 el  只能指定一个根模板  参数 是一个字符串
+        // el和 $mount 同时存在时  使用el
+        // vm.$mount('#app')
+
+        // 函数可以被Vm实例访问   
+        // console.log(vm.xxx());
+        // console.log(vm.msg);
+    </script>
+</body>
+
+</html>

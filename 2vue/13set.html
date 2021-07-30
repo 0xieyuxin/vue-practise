@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{foo}}</h2>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 1,
+                b: 2
+            },
+            methods: {},
+            computed: {
+                foo: {
+                    /* 
+                    1:使用计算属性时候触发
+                    2:get函数中响应式数据发生改变时候触发
+                    */
+                    get: function () {
+                        console.log("get run");
+                        return this.a + this.b;
+                    },
+                    // 给 foo 重新赋值的时候执行
+                    set: function (newval) {
+                        console.log("set run");
+                        console.log(newval); // 123
+                        this.a=newval-2;
+                        this.b=newval-4;
+                    }
+                }
+            }
+        });
+        // 给 foo 重新赋值的时候执行
+        vm.foo = 123;
+    </script>
+</body>
+
+</html>

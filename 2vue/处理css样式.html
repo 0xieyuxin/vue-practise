@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 单向绑定  style为变量名 值为color red -->
+        <h1 :style="style">通过vue 动态处理css样式</h1>
+
+        <!--  style  动态的写法  后面的color 是变量-->
+        <h2 :style='{fontSize:"42px",color:color,height:h+"px"}'>style</h2>
+
+        <button @click='changecolor'>click</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                style: {
+                    color: "red"
+                },
+                color:'pink',
+                h:200
+            },
+            methods: {
+                changecolor() {
+                    this.style.color="plum"
+                }
+            }
+        });
+
+        // Vue.compoent()   // vue上的静态属性
+        // vm.$count('#app');// vue上的原型属性
+
+
+    </script>
+</body>
+
+</html>

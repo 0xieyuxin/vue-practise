@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: plum;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-show 控制元素的显示和隐藏
+        绑定 true  显示 
+            false  隐藏 display:none
+
+
+     -->
+    <div id="app">
+        <div class="box" v-show='isShow'></div>
+        <button @click='hide'>隐藏</button>
+        <button @click='show'>显示</button>
+        <button @click='trigger'>trigger</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+
+    <script>
+
+        // vue中所有
+        // methods computed  watch  中所有function都是vue的实例  为了获取数据方便
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isShow: true
+            },
+            methods: {
+                // 定义函数
+                hide() {
+                    this.isShow = false
+                },
+                show() {
+                    this.isShow = true;
+                    // vm.init(); 对象触发
+                },
+                trigger() {
+                    // if (this.isShow) {
+                    //     this.isShow = false
+                    // } else {
+                    //     this.isShow = true
+                    // }
+
+                    // 取反 找控制显示隐藏的数据
+                    this.isShow=!this.isShow
+                },
+
+                init() {
+                    console.log('init run');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

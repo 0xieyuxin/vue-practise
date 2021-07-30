@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for='(item,index) in adress'>
+            <!-- 
+                :value="item.value" 是动态的  是变量
+                value="item.value" 是静态的  是字符串
+            -->
+            <input type="checkbox" :value="item.value" v-model='checkarr'>
+            <span>{{item.name}}</span>
+
+        </div>
+        <h1>{{checkarr}}</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                adress: [
+                    { name: '南京', value: 'nanjing ' },
+                    { name: '上海', value: ' shanghai' },
+                    { name: '杭州', value: 'hangzhou' },
+                ],
+                checkarr: []
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

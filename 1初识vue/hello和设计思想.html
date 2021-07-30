@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <!-- {{}}  模板语法 -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+
+        let app=new Vue({
+            el:'#app',
+            data:{
+                msg:'hello'
+            },
+            created(){
+                console.log("creat init run");
+                setTimeout(()=>{
+                    this.msg="new hell"
+                },3000)
+            }
+        });
+        console.log(app);
+    </script>
+
+
+
+
+
+<!-- 
+    从一到面试题看看vue的设计思想
+vue的设计思想
+
+数据驱动视图MVVM
+Model
+vue中共的数据data(七种类型)
+ViewModel
+vue中模板语法指令钩子函数事件驱动等...
+View
+指的是浏览器视图dom元素
+
+mvvm  响应式数据系统
+当数据发生变化时,视图也会发现变化
+当视图发生变化时,数据也会发现变化
+
+如何实现呢?
+1 Mode1层数据，经过ViewModel中指令 事件函数等处理响应到View,从而实现驱动view的变化
+2当view发生变化时候，也会通过ViewModel中 指令，事件等方式去修改Model
+
+
+指令和事件等，如何建立视图与数据之间的联系的
+1: el指定更模板后，el将不是dom元素，是vue 中模板，
+存在形式: [js对象]方式
+2: vue中指令与方法， 修改不是是js对象， 不是真实dom.修改完后，最后渲染dom
+3:在处理[js对象]  已经处理了兼容性问题 渲染为真是实dom
+
+
+
+所以开发者使用vue考虑问题如下:
+1:如何合理构建vue中书
+2:如何对数据进行处理，可以获取想要的视图效果
+不需要考虑
+1
+浏览器兼容兼容性问题
+2性能优化问题。例如:对于复杂页面，如何降低操作dom次数。
+
+ -->
+</body>
+</html>

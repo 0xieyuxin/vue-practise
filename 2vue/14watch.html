@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{count}}</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+                arr: [
+                    {name:'hhh'}
+                ]
+            },
+            methods: {},
+            /* 
+            监听属性:  监听响应式对象
+            赋值是对象
+
+
+            key:是被监听的数据  与 响应式数据名  一致
+            value: 函数或者是对象
+
+            函数 :执行条件
+            当被监听数据发生改变的时候,执行函数
+
+            */
+            watch: {
+                'count': function (newval, oldval) {
+                    // console.log(a, b, c);
+                    /* 
+                    参数一: 改变后的值  新值
+                    参数二: 改变前的值  旧值
+                    */
+                    console.log('old', oldval);
+                    console.log('new', newval);
+                },
+                /* 
+                数组 或者 对象 数据嵌套 
+                监听方式:深度监听
+
+                deep:true  启动深度监听
+
+                当内部数据发生变化的时候,触发函数
+                handler:function(){}
+
+
+                'arr[0].name':function(){
+                    监听数据中某个具体的数据
+                }
+                
+                */
+                "arr": {
+                    deep: true,
+                    handler: function (newval, oldval) {
+                        console.log(newval, oldval);
+                    }
+                }
+            },
+            created() {
+                setInterval(() => {
+                    // this.count = this.count + 2
+                    this.arr[0].name = "xxx"
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+
+</html>
